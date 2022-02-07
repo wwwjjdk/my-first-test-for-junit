@@ -6,6 +6,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
+
 
 public class CaclTests {
     Calc sut;
@@ -43,8 +46,7 @@ public class CaclTests {
         int result = sut.plus.apply(x,y);
 
         //assert
-        Assertions.assertEquals(expected, result);
-        Assertions.assertDoesNotThrow(()-> sut.plus.apply(x,y)); //проверка на выброс исключения
+       assertThat(expected,is(equalTo(result)));// или без из как я понял разницы 0.0
     }
 
     @Test
